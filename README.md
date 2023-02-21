@@ -13,7 +13,7 @@
 - деление js-кода на модули;
 - работа с асинхронными запросами.
 
-![screenshot](src/assets/img/momentum.png)
+![screenshot](./src/assets/img/momentum.PNG)
 
 - [Demo](https://momentum-2021q3.netlify.app/)
 - [Файлы с вёрсткой](https://github.com/rolling-scopes-school/stage1-tasks/tree/momentum)
