@@ -1,0 +1,1 @@
+import {showModel1} from "./js/controller";
