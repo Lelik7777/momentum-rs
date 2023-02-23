@@ -2,25 +2,11 @@
   "name": "stage1-tasks-momentum",
   "version": "1.0.0",
   "description": "2023",
-  "main": "src/js/controller.js",
+  "main": "src/",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve --env develop",
-    "lint": "eslint src"
+
   },
   "author": "Lelik7777",
-  "license": "ISC",
-  "devDependencies": {
-    "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.7.3",
-    "eslint": "^8.34.0",
-    "eslint-webpack-plugin": "^4.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.7.2",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
-  },
-  "dependencies": {
-    "webpack-dev-server": "^4.11.1"
-  }
+  "license": "ISC"
+
 }
