@@ -13,7 +13,7 @@
 - деление js-кода на модули;
 - работа с асинхронными запросами.
 
-![screenshot](src/assets/img/momentum.png)
+![screenshot](./src/assets/img/momentum.PNG)
 
 - [Demo](https://momentum-2021q3.netlify.app/)
 - [Файлы с вёрсткой](https://github.com/rolling-scopes-school/stage1-tasks/tree/momentum)
@@ -187,3 +187,43 @@
 - [Вебинар: Асинхронность в JavaScript](https://youtu.be/Ih6Q7ka2eSQ)
 
 Документ для вопросов: https://docs.google.com/spreadsheets/d/1dMDLBC4-1XPaVMehZB6DqetToXZhq4x0PiZtj-jvLRc/edit#gid=1153986630
+
+# webpack
+
+* npm install webpack webpack-cli webpack-dev-server --save-dev
+
+**installing the webpack itself, its own webpack server and utilities for managing the webpack via the console**
+
+* create webpack.config.js
+* create .browserslist
+* work with html
+
+npm install --save-dev html-webpack-plugin
+
+npm install --save-dev html-loader
+
+and import './index.html' in index.js
+
+* work with styles
+
+npm install --save-dev style-loader
+
+npm install --save-dev css-loader
+
+and import './css/style.css' in index.js
+
+* add plugin MiniCssExtractPlugin - to keep the styles in a separate folder
+
+npm install --save-dev mini-css-extract-plugin
+
+* npm install --save-dev postcss-loader postcss postcss-preset-env
+
+resolve problem prefix in css
+
+* npm install -D babel-loader @babel/core @babel/preset-env 
+
+solves the problems of compatibility of the new syntax js in old browsers
+* npm install --save @babel/polyfill
+* npm install image-webpack-loader --save-dev
+
+work with images and compresses picture size
