@@ -10,6 +10,8 @@
 }
 
 body {
+  /*it shows how postcss-loader work */
+  /*user-select: none;*/
   min-width: 480px;
   min-height: 100vh;
   font-family: 'Arial', sans-serif;
