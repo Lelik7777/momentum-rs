@@ -41,13 +41,11 @@ document.querySelector('.lng').addEventListener('click', function () {
     if (lang === ENG) {
         setLocalStorage('lg', RU);
         lang = getLocalStorage(LG);
-        showCurrentDate(lang);
-        showGreeting(lang);
+        location.reload();
     } else {
         setLocalStorage('lg', ENG);
         lang = getLocalStorage(LG);
-        showCurrentDate(lang);
-        showGreeting(lang);
+        location.reload();
     }
     $ru.classList.toggle(ACTIVE);
     $eng.classList.toggle(ACTIVE);

@@ -1,4 +1,4 @@
-import {MIDNIGHT} from "./config";
+import {ENG, MIDNIGHT, RU} from "./config";
 import {getEl} from "./helper";
 
 const $time = getEl('.time');
@@ -11,9 +11,9 @@ export const showCurrentDate = (lang) => {
 }
 export const showCurrentTime = (lang) => {
     const date = new Date();
-    const currTime = date.toLocaleTimeString();
+    let currTime=date.toLocaleTimeString(lang);
     $time.textContent = currTime;
     if (date.getHours() === MIDNIGHT) showCurrentDate(lang);
-    setTimeout(showCurrentTime, 1000);
+    setTimeout(showCurrentTime, 1000,lang);
 }
 

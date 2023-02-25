@@ -6,15 +6,20 @@
   "scripts": {
     "build": "webpack --node-env=production",
     "dev": "webpack serve",
+    "deploy": "gh-pages -d dist",
     "clear": "rd /s /q dist"
   },
   "author": "Lelik7777",
+  "repository": {
+    "url": "git+https://github.com/{Lelik7777}/{momentum-rs}.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "gh-pages": "^5.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "image-webpack-loader": "^8.1.0",
