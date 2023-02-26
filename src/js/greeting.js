@@ -4,9 +4,9 @@ import {getEl} from "./helper";
 const $greeting = getEl('.greeting');
 
 const timeOfDayEng = ['Good night,', 'Good morning,', 'Good afternoon,', 'Good evening,'];
-const timeOfDayRu = ['Доброй ночи,', 'Доброе утро,', 'Добрый день,', ' Добрый вечер,'];
+const timeOfDayRu = ['Доброй ночи,', 'Доброе утро,', 'Добрый день,', 'Добрый вечер,'];
 
-export const showGreeting = (lang) => {
+export const showGreeting = (lang, boolean = true) => {
 
     const date = new Date();
     const time = date.getHours();
@@ -23,6 +23,6 @@ export const showGreeting = (lang) => {
             return lang === ENG ? timeOfDayEng[3] : timeOfDayRu[3];
 
     }
-    $greeting.textContent = getGreeting(time);
+    if (boolean) $greeting.textContent = getGreeting(time);
     return getGreeting(time).replace(/good/i, '').replace(/\,/, '').trim();
 }

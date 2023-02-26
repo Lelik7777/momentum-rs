@@ -11,14 +11,16 @@ import {
     getRandomNumber,
     setLocalStorage
 } from "./js/helper";
-import {ACTIVE, ENG, LG, NAME, RU, URLGH} from "./js/config";
+import {ACTIVE, CITY, ENG, LG, NAME, RU, URLGH} from "./js/config";
 import {showGreeting} from "./js/greeting";
 import {getBackgroundImg} from "./js/backgroundImg";
+import {getWeather} from "./js/weather";
 
 
 const $ru = getEl('.ru');
 const $eng = getEl('.eng');
 const $name = getEl('.name');
+const $city = getEl('.city');
 const sliderPrev = getEl('.slide-prev');
 const sliderNext = getEl('.slide-next');
 let randomValue = getRandomNumber();
@@ -51,10 +53,17 @@ window.addEventListener('load', function () {
             .map((char, i) => i === 0 ? char.toUpperCase() : char).join('');
     }
 
+    getBackgroundImg(URLGH, showGreeting(ENG, false), checkNumber(randomValue));
     showCurrentTime(lang);
     showCurrentDate(lang);
     showGreeting(lang);
-    getBackgroundImg(URLGH, showGreeting(ENG), checkNumber(randomValue));
+
+    if (getLocalStorage(CITY)) {
+        getWeather(lang, getLocalStorage(CITY));
+    } else {
+        if (lang === ENG) getWeather(lang, 'Minsk');
+        else getWeather(lang, 'Минск');
+    }
 
 });
 
@@ -71,6 +80,7 @@ document.querySelector('.lng').addEventListener('click', function () {
     }
     $ru.classList.toggle(ACTIVE);
     $eng.classList.toggle(ACTIVE);
+
 });
 window.addEventListener('beforeunload', function () {
     if ($name.value) {
@@ -86,23 +96,29 @@ window.addEventListener('beforeunload', function () {
                 randomValue--;
             else randomValue = 20;
 
-            getBackgroundImg(URLGH, showGreeting(ENG), checkNumber(randomValue));
+            getBackgroundImg(URLGH, showGreeting(ENG, false), checkNumber(randomValue));
 
         } else {
-            if (randomValue < 20){
+            if (randomValue < 20) {
                 randomValue++;
                 console.log(randomValue)
-            }
-
-            else{
+            } else {
                 randomValue = 1;
                 console.log(randomValue)
             }
 
 
-            getBackgroundImg(URLGH, showGreeting(ENG), checkNumber(randomValue));
+            getBackgroundImg(URLGH, showGreeting(ENG, false), checkNumber(randomValue));
         }
 
     })
+});
+
+//weather
+$city.addEventListener('keypress', function (e) {
+    if (e.code === 'Enter') {
+        setLocalStorage(CITY, this.value);
+        getWeather(lang, this.value);
+    }
 })
 
