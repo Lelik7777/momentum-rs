@@ -7,6 +7,7 @@ const timeOfDayEng = ['Good night,', 'Good morning,', 'Good afternoon,', 'Good e
 const timeOfDayRu = ['Доброй ночи,', 'Доброе утро,', 'Добрый день,', ' Добрый вечер,'];
 
 export const showGreeting = (lang) => {
+
     const date = new Date();
     const time = date.getHours();
 

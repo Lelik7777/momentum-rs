@@ -1,3 +1,5 @@
+import {getRandomNumber} from "./helper";
+
 export const RU = 'ru';
 export const ENG = 'eng';
 export const ACTIVE = '_active';
