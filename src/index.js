@@ -89,10 +89,16 @@ window.addEventListener('beforeunload', function () {
             getBackgroundImg(URLGH, showGreeting(ENG), checkNumber(randomValue));
 
         } else {
-            if (randomValue < 20)
+            if (randomValue < 20){
                 randomValue++;
-            else
+                console.log(randomValue)
+            }
+
+            else{
                 randomValue = 1;
+                console.log(randomValue)
+            }
+
 
             getBackgroundImg(URLGH, showGreeting(ENG), checkNumber(randomValue));
         }
