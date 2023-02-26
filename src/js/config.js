@@ -7,3 +7,4 @@ export const SIX = 6;
 export const TWELVE = 12;
 export const SIXTEEN = 18;
 export const NAME = 'name';
+export const URLGH = 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images';
