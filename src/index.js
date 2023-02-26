@@ -15,12 +15,14 @@ import {ACTIVE, CITY, ENG, LG, NAME, RU, URLGH} from "./js/config";
 import {showGreeting} from "./js/greeting";
 import {getBackgroundImg} from "./js/backgroundImg";
 import {getWeather} from "./js/weather";
+import {getQuotes} from "./js/quotes";
 
 
 const $ru = getEl('.ru');
 const $eng = getEl('.eng');
 const $name = getEl('.name');
 const $city = getEl('.city');
+const $changeQuote = getEl('.change-quote');
 const sliderPrev = getEl('.slide-prev');
 const sliderNext = getEl('.slide-next');
 let randomValue = getRandomNumber();
@@ -57,6 +59,7 @@ window.addEventListener('load', function () {
     showCurrentTime(lang);
     showCurrentDate(lang);
     showGreeting(lang);
+    getQuotes(lang);
 
     if (getLocalStorage(CITY)) {
         getWeather(lang, getLocalStorage(CITY));
@@ -120,5 +123,9 @@ $city.addEventListener('keypress', function (e) {
         setLocalStorage(CITY, this.value);
         getWeather(lang, this.value);
     }
+});
+//quote
+$changeQuote.addEventListener('click', function () {
+    getQuotes(lang);
 })
 
