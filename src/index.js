@@ -17,7 +17,7 @@ import {showGreeting} from "./js/greeting";
 import {getBackgroundImg} from "./js/backgroundImg";
 import {getWeather} from "./js/weather";
 import {getQuotes} from "./js/quotes";
-import {playAudio} from "./js/player";
+import {playAudio, playNext} from "./js/player";
 
 
 const $ru = getEl('.ru');
@@ -29,19 +29,19 @@ const $sliderPrev = getEl('.slide-prev');
 const $sliderNext = getEl('.slide-next');
 const $playList = getEl('.play-list');
 const $player = getEl('.player');
-const $mainAudio = getEl('.btn__audio');
+const $btnAudio = getEl('.btn__audio');
 const $playPrev = getEl('.play-prev');
 const $playNext = getEl('.play-next');
 let randomValue = getRandomNumber();
 let lang;
-let isPlay = false;
 
 
 window.addEventListener('load', function () {
     //add music list
-    sounds.map(el => {
+    sounds.forEach((el, i) => {
         const li = document.createElement('li');
         li.textContent = el.title;
+        if (i === 0) li.classList.add('item-active');
         li.classList.add('play-item');
         $playList.append(li);
     });
@@ -144,5 +144,10 @@ $changeQuote.addEventListener('click', function () {
     getQuotes(lang);
 });
 
-$mainAudio.addEventListener('click', playAudio);
+$btnAudio.addEventListener('click', function () {
+    playAudio(sounds[0].src);
+})
+$playNext.addEventListener('click', function () {
+    playNext(sounds);
+})
 

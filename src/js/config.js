@@ -12,3 +12,4 @@ export const URLGH = 'https://raw.githubusercontent.com/rolling-scopes-school/st
 export const URLWEATHER = 'https://api.openweathermap.org/data/2.5/weather?&appid=81002ab41c0498f35776f0db9eb15c9e&units=metric';
 export const CODE200=200;
 export const CITY='city';
+
