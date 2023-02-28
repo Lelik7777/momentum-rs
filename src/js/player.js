@@ -1,42 +1,33 @@
 import {getEl} from "./helper";
 
+
 const $btnAudio = getEl('.btn__audio');
+const $playList = getEl('.play-list');
 const active = 'item-active';
 const play = 'play';
 const pause = 'pause';
-
+let isPlay = false;
 const audio = new Audio();
 
-export const playAudio = (src) => {
 
+export const playAudio = (src, flag = false) => {
     audio.src = src;
-    if ($btnAudio.classList.contains(play)) {
+    if (flag) {
+        isPlay=false;
         audio.currentTime = 0;
         audio.play();
         $btnAudio.classList.add(pause);
-        $btnAudio.classList.remove(play);
-
+    }
+    if (!isPlay) {
+        audio.currentTime = 0;
+        audio.play();
+        $btnAudio.classList.add(pause)
+        isPlay = true;
     } else {
         audio.pause();
         $btnAudio.classList.remove(pause);
-        $btnAudio.classList.add(play);
-
+        isPlay = false;
     }
 }
-export const playNext = (playList) => {
-    document.querySelectorAll('.play-item').forEach((el, i, arr) => {
-       // console.log(el)
-        if (arr[arr.length - 1].classList.contains(active)) {
-            console.log(el)
-            arr[0].classList.add(active);
-            el.classList.remove(active);
-        } else
-            if(el.classList.contains(active)) {
-                console.log(el)
-                el.classList.remove(active);
-                arr[i + 1].classList.add(active);
-            }
 
-    })
-}
 

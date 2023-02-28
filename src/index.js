@@ -17,7 +17,7 @@ import {showGreeting} from "./js/greeting";
 import {getBackgroundImg} from "./js/backgroundImg";
 import {getWeather} from "./js/weather";
 import {getQuotes} from "./js/quotes";
-import {playAudio, playNext} from "./js/player";
+import {playAudio} from "./js/player";
 
 
 const $ru = getEl('.ru');
@@ -32,9 +32,11 @@ const $player = getEl('.player');
 const $btnAudio = getEl('.btn__audio');
 const $playPrev = getEl('.play-prev');
 const $playNext = getEl('.play-next');
+let playNum = 0;
 let randomValue = getRandomNumber();
 let lang;
-
+let count = 0;
+let count2 = 0;
 
 window.addEventListener('load', function () {
     //add music list
@@ -119,13 +121,9 @@ window.addEventListener('beforeunload', function () {
         } else {
             if (randomValue < 20) {
                 randomValue++;
-                console.log(randomValue)
             } else {
                 randomValue = 1;
-                console.log(randomValue)
             }
-
-
             getBackgroundImg(URLGH, showGreeting(ENG, false), checkNumber(randomValue));
         }
 
@@ -145,9 +143,19 @@ $changeQuote.addEventListener('click', function () {
 });
 
 $btnAudio.addEventListener('click', function () {
-    playAudio(sounds[0].src);
+    playAudio(sounds[playNum].src);
 })
 $playNext.addEventListener('click', function () {
-    playNext(sounds);
-})
-
+    $playList.children[playNum].classList.remove('item-active');
+    playNum++;
+    if (playNum >= sounds.length) playNum = 0;
+    $playList.children[playNum].classList.add('item-active');
+    playAudio(sounds[playNum].src, true);
+});
+$playPrev.addEventListener('click', function () {
+    $playList.children[playNum].classList.remove('item-active');
+    playNum--;
+    if (playNum === -1) playNum = sounds.length - 1;
+    $playList.children[playNum].classList.add('item-active');
+    playAudio(sounds[playNum].src, true);
+});
