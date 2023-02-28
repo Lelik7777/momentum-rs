@@ -1,4 +1,5 @@
 const path = require('path');
+const SRC = path.resolve(__dirname, 'node_modules');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 //styles from html move,replace  to separate folder; we need it for production
@@ -22,7 +23,7 @@ module.exports = {
     target,
     //allows to immediately open the page on port 3000 and show changes online
     devServer: {
-        port: 3000,
+        port: 8080,
         open: true,
         hot: true,
     },
@@ -38,7 +39,8 @@ module.exports = {
         clean: true,
         filename: '[name].[contenthash].js',
         //create separate folder in dist for images
-        assetModuleFilename: "assets/[name][ext]"
+        assetModuleFilename: "assets/[name][ext]",
+
     },
     plugins: [
         //index.html appear in dist
@@ -77,9 +79,21 @@ module.exports = {
                     filename: 'fonts/[name][ext]'
                 }
             },
+            {
+                test: /\.mp3$/,
+                loader: "file-loader",
+                include: SRC,
+                type: 'asset/resource',
+                // options: {
+                //     name: '[path][name].[ext]',
+                // },
+                generator: {
+                    filename: 'sounds/[path][name].[ext]'
+                }
+            },
             // for assets(images)
             {
-                test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+                test: /\.(?:ico|gif|png|jpg|jpeg|svg|ogg|mp3|wav)$/i,
                 use: devMode ?
                     []
                     : [

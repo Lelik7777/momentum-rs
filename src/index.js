@@ -1,6 +1,7 @@
 //import './index.html';
 //i can write path in entry in webpack config
-//import './css/style.css';
+import './css/style.css';
+import sounds from "./assets/sounds/sounds";
 import {showCurrentDate, showCurrentTime} from "./js/timeDate";
 import {
     checkNumber,
@@ -16,6 +17,7 @@ import {showGreeting} from "./js/greeting";
 import {getBackgroundImg} from "./js/backgroundImg";
 import {getWeather} from "./js/weather";
 import {getQuotes} from "./js/quotes";
+import {playAudio} from "./js/player";
 
 
 const $ru = getEl('.ru');
@@ -23,13 +25,26 @@ const $eng = getEl('.eng');
 const $name = getEl('.name');
 const $city = getEl('.city');
 const $changeQuote = getEl('.change-quote');
-const sliderPrev = getEl('.slide-prev');
-const sliderNext = getEl('.slide-next');
+const $sliderPrev = getEl('.slide-prev');
+const $sliderNext = getEl('.slide-next');
+const $playList = getEl('.play-list');
+const $player = getEl('.player');
+const $mainAudio = getEl('.btn__audio');
+const $playPrev = getEl('.play-prev');
+const $playNext = getEl('.play-next');
 let randomValue = getRandomNumber();
 let lang;
+let isPlay = false;
 
 
 window.addEventListener('load', function () {
+    //add music list
+    sounds.map(el => {
+        const li = document.createElement('li');
+        li.textContent = el.title;
+        li.classList.add('play-item');
+        $playList.append(li);
+    });
 
     lang = getLocalStorage(LG);
     //set lg in local storage
@@ -92,7 +107,7 @@ window.addEventListener('beforeunload', function () {
 });
 
 // slider
-[sliderPrev, sliderNext].forEach((el, i) => {
+[$sliderPrev, $sliderNext].forEach((el, i) => {
     el.addEventListener('click', function () {
         if (i === 0) {
             if (randomValue > 1)
@@ -127,5 +142,7 @@ $city.addEventListener('keypress', function (e) {
 //quote
 $changeQuote.addEventListener('click', function () {
     getQuotes(lang);
-})
+});
+
+$mainAudio.addEventListener('click', playAudio);
 
