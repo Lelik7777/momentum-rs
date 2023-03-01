@@ -1,6 +1,16 @@
 export const RU = 'ru';
 export const ENG = 'eng';
+export const GH = 'gh';
+export const FLICKR = 'flickr';
+export const SETTINGS = 'settings';
+export const TIME = 'time';
+export const DATE = 'date';
+export const GREETING = 'greeting';
+export const QUOTE = 'quote';
+export const WEATHER = 'weather';
+export const PLAYER = 'player';
 export const ACTIVE = '_active';
+export const ITEM_ACTIVE = 'item-active';
 export const LG = 'lg';
 export const MIDNIGHT = 0;
 export const SIX = 6;

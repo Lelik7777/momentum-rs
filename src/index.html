@@ -39,9 +39,9 @@
         <button class="slide-prev slider-icon"></button>
         <button class="slide-next slider-icon"></button>
     </div>
-    <time class="time">time</time>
-    <date class="date"></date>
-    <div class="greeting-container">
+    <time class="time _active">time</time>
+    <date class="date _active"></date>
+    <div class="greeting-container _active">
         <span class="greeting"></span>
         <input type="text" class="name"/>
     </div>
@@ -52,8 +52,43 @@
         <div class="quote"></div>
         <div class="author"></div>
     </div>
-    <div class="settings"></div>
-    <span class="setting-icon" ></span>
+    <div class="settings">
+        <div class="settings__block">
+            <span>time</span>
+            <input type="checkbox" name="time">
+        </div>
+        <div class="settings__block">
+            <span>player</span>
+            <input type="checkbox" name="player">
+        </div>
+        <div class="settings__block">
+            <span>weather</span>
+            <input type="checkbox" id="weather" name="weather">
+        </div>
+        <div class="settings__block">
+            <span>quotes</span>
+            <input type="checkbox" id="quote" name="quote">
+        </div>
+        <div class="settings__block">
+            <span>bg</span>
+            <div>
+                <input type="radio" id="gh" name="bg" value="gh">
+                <label for="gh">gh</label>
+                <input type="radio" id="flickr" name="bg" value="flickr">
+                <label for="flickr">flickr</label>
+            </div>
+        </div>
+<!--        <div class="settings__block">-->
+<!--            <span>language</span>-->
+<!--            <div>-->
+<!--                <input type="radio" id="ru" name="lang" value="ru">-->
+<!--                <label for="ru">ru</label>-->
+<!--                <input type="radio" id="eng" name="lang" value="eng">-->
+<!--                <label for="en">en</label>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    <span class="setting-icon"></span>
 </footer>
 
 <!--<script src="./src/index.js"></script>-->

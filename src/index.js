@@ -6,13 +6,28 @@ import {showCurrentDate, showCurrentTime} from "./js/timeDate";
 import {
     checkNumber,
     deleteLocalStorage,
-    getEl,
+    getEl, getInputById, getInputByName,
     getLocalStorage,
     getPlaceholder,
     getRandomNumber,
     setLocalStorage
 } from "./js/helper";
-import {ACTIVE, CITY, ENG, LG, NAME, RU, URLGH} from "./js/config";
+import {
+    ACTIVE,
+    CITY,
+    ENG,
+    FLICKR,
+    GH,
+    ITEM_ACTIVE,
+    LG,
+    NAME,
+    PLAYER,
+    QUOTE,
+    RU, SETTINGS,
+    TIME,
+    URLGH,
+    WEATHER
+} from "./js/config";
 import {showGreeting} from "./js/greeting";
 import {getBackgroundImg} from "./js/backgroundImg";
 import {getWeather} from "./js/weather";
@@ -37,6 +52,13 @@ const $settings = getEl('.settings');
 let playNum = 0;
 let randomValue = getRandomNumber();
 let lang;
+let isShowTime;
+let isShowPlayer;
+let isShowWeather;
+let isShowQuote;
+let isShowGh;
+let isShowFlickr;
+let isShowSettings=null;
 let count = 0;
 let count2 = 0;
 
@@ -50,14 +72,49 @@ window.addEventListener('load', function () {
         $playList.append(li);
     });
 
+    //set data in local storage
+
+
+
+
     lang = getLocalStorage(LG);
-    //set lg in local storage
-    if (!lang) {
-        setLocalStorage(LG, ENG);
-        lang = getLocalStorage(LG);
-        $eng.classList.add(ACTIVE);
-        getPlaceholder(lang, $name);
+    $eng.classList.add(ACTIVE);
+    getPlaceholder(lang, $name);
+
+    isShowTime = getLocalStorage(TIME);
+    getInputByName(TIME).checked = isShowTime;
+
+    isShowWeather = getLocalStorage(WEATHER);
+    getInputByName(WEATHER).checked = isShowWeather;
+
+    isShowPlayer = getLocalStorage(PLAYER);
+    getInputByName(PLAYER).checked = isShowPlayer;
+
+    isShowQuote = getLocalStorage(QUOTE);
+    getInputByName(QUOTE).checked = isShowQuote;
+
+    isShowGh = getLocalStorage(GH);
+    getInputById(GH).checked = isShowGh;
+
+    isShowSettings = getLocalStorage(SETTINGS);
+    console.log(isShowSettings)
+    if (isShowSettings) {
+        console.log('show settings')
     }
+
+    if (lang === undefined) setLocalStorage(LG, ENG);
+    if (isShowWeather === undefined) setLocalStorage(WEATHER, true);
+    if (isShowTime === undefined) setLocalStorage(TIME, true);
+    if (isShowPlayer === undefined) setLocalStorage(PLAYER, true);
+    if (isShowQuote === undefined) setLocalStorage(QUOTE, true);
+    if (isShowGh === undefined) setLocalStorage(GH, true);
+    if (isShowFlickr === undefined) setLocalStorage(FLICKR, false);
+    if (isShowSettings === undefined) {
+        setLocalStorage(SETTINGS, false);
+    }
+    console.log(isShowSettings)
+    if(isShowSettings)
+    //$settings.classList.add(ACTIVE);
 
     if (lang === ENG) {
         $eng.classList.add(ACTIVE);
@@ -92,11 +149,11 @@ window.addEventListener('load', function () {
 //change language
 document.querySelector('.lng').addEventListener('click', function () {
     if (lang === ENG) {
-        setLocalStorage('lg', RU);
+        setLocalStorage(LG, RU);
         lang = getLocalStorage(LG);
         location.reload();
     } else {
-        setLocalStorage('lg', ENG);
+        setLocalStorage(LG, ENG);
         lang = getLocalStorage(LG);
         location.reload();
     }
@@ -148,21 +205,36 @@ $btnAudio.addEventListener('click', function () {
     playAudio(sounds[playNum].src);
 })
 $playNext.addEventListener('click', function () {
-    $playList.children[playNum].classList.remove('item-active');
+    $playList.children[playNum].classList.remove(ITEM_ACTIVE);
     playNum++;
     if (playNum >= sounds.length) playNum = 0;
-    $playList.children[playNum].classList.add('item-active');
+    $playList.children[playNum].classList.add(ITEM_ACTIVE);
     playAudio(sounds[playNum].src, true);
 });
 $playPrev.addEventListener('click', function () {
-    $playList.children[playNum].classList.remove('item-active');
+    $playList.children[playNum].classList.remove(ITEM_ACTIVE);
     playNum--;
     if (playNum === -1) playNum = sounds.length - 1;
-    $playList.children[playNum].classList.add('item-active');
+    $playList.children[playNum].classList.add(ITEM_ACTIVE);
     playAudio(sounds[playNum].src, true);
 });
 
 //settings
 $settingIcon.addEventListener('click', function () {
-    $settings.classList.toggle('_active');
+    $settings.classList.toggle(ACTIVE);
+    if ($settings.classList.contains(ACTIVE)) {
+
+    } else console.log('not active')
+});
+document.body.addEventListener('click', function () {
+    if ($settings.classList.contains(ACTIVE)) {
+        setLocalStorage(SETTINGS, true);
+        isShowSettings = getLocalStorage(SETTINGS);
+    } else {
+        setLocalStorage(SETTINGS, false);
+        isShowSettings = getLocalStorage(SETTINGS);
+    }
 })
+$settings.addEventListener('change', function (e) {
+    console.log(e.target)
+});

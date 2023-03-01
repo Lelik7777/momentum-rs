@@ -106,6 +106,7 @@ body {
     height: 40px;
     background-size: 40px 40px;
     background-image: url("../assets/svg/play.svg");
+    transition: all 1s;
 }
 
 .pause {
@@ -129,6 +130,7 @@ body {
     width: 180px;
     min-height: 180px;
     text-align: left;
+    transition: all 1s;
 }
 
 .weather .lng {
@@ -219,6 +221,7 @@ body {
     font-family: 'Arial-MT';
     font-size: 100px;
     letter-spacing: -4px;
+    opacity: 0;
 }
 
 .date {
@@ -276,11 +279,28 @@ body {
     position: absolute;
     left: 20px;
     bottom: 85px;
-    width: 400px;
+    width: 450px;
     height: 200px;
     background-color: #eeeeee;
     opacity: 0;
     transition: opacity 0.5s;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings__block {
+    color: black;
+    font-size: 1.2rem;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings__block:nth-child(n) {
+    margin-right: 20px;
 }
 
 .setting-icon {
@@ -303,7 +323,7 @@ body {
 }
 
 ._active {
-    opacity: 0.4;
+    opacity: 0.9;
 }
 
 .change-quote {
