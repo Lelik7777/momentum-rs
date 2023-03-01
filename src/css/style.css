@@ -18,7 +18,7 @@ body {
     font-size: 16px;
     color: #fff;
     text-align: center;
-    background:  center/cover, rgba(0, 0, 0, 0.5);
+    background: center/cover, rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
     transition: background-image 1s ease-in-out;
 }
@@ -269,6 +269,41 @@ body {
     height: 30vh;
     min-height: 160px;
     padding: 20px;
+    position: relative;
+}
+
+.settings {
+    position: absolute;
+    left: 20px;
+    bottom: 85px;
+    width: 400px;
+    height: 200px;
+    background-color: #eeeeee;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.setting-icon {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    mask-image: url("../assets/svg/settings-3110.svg");
+    background-color: rgba(255, 255, 255, .684);
+    opacity: 0.7;
+    transition: all 1s;
+}
+
+.setting-icon:hover {
+    transform: scale(1.2) rotate(90deg);
+    cursor: pointer;
+    opacity: 1;
+}
+
+._active {
+    opacity: 0.4;
 }
 
 .change-quote {

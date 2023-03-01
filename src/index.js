@@ -32,6 +32,8 @@ const $player = getEl('.player');
 const $btnAudio = getEl('.btn__audio');
 const $playPrev = getEl('.play-prev');
 const $playNext = getEl('.play-next');
+const $settingIcon = getEl('.setting-icon');
+const $settings = getEl('.settings');
 let playNum = 0;
 let randomValue = getRandomNumber();
 let lang;
@@ -159,3 +161,8 @@ $playPrev.addEventListener('click', function () {
     $playList.children[playNum].classList.add('item-active');
     playAudio(sounds[playNum].src, true);
 });
+
+//settings
+$settingIcon.addEventListener('click', function () {
+    $settings.classList.toggle('_active');
+})
