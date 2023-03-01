@@ -18,7 +18,7 @@ body {
     font-size: 16px;
     color: #fff;
     text-align: center;
-    background:  center/cover, rgba(0, 0, 0, 0.5);
+    background: center/cover, rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
     transition: background-image 1s ease-in-out;
 }
@@ -106,6 +106,7 @@ body {
     height: 40px;
     background-size: 40px 40px;
     background-image: url(assets/play.svg);
+    transition: all 1s;
 }
 
 .pause {
@@ -129,6 +130,7 @@ body {
     width: 180px;
     min-height: 180px;
     text-align: left;
+    transition: all 1s;
 }
 
 .weather .lng {
@@ -232,6 +234,7 @@ body {
     font-family: 'Arial-MT';
     font-size: 100px;
     letter-spacing: -4px;
+    opacity: 0;
 }
 
 .date {
@@ -292,6 +295,59 @@ body {
     height: 30vh;
     min-height: 160px;
     padding: 20px;
+    position: relative;
+}
+
+.settings {
+    position: absolute;
+    left: 20px;
+    bottom: 85px;
+    width: 450px;
+    height: 200px;
+    background-color: #eeeeee;
+    opacity: 0;
+    transition: opacity 0.5s;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings__block {
+    color: black;
+    font-size: 1.2rem;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings__block:nth-child(n) {
+    margin-right: 20px;
+}
+
+.setting-icon {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    -webkit-mask-image: url(assets/settings-3110.svg);
+            mask-image: url(assets/settings-3110.svg);
+    background-color: rgba(255, 255, 255, .684);
+    opacity: 0.7;
+    transition: all 1s;
+}
+
+.setting-icon:hover {
+    transform: scale(1.2) rotate(90deg);
+    cursor: pointer;
+    opacity: 1;
+}
+
+._active {
+    opacity: 0.9;
 }
 
 .change-quote {
